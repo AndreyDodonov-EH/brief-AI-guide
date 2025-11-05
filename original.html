@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A brief guide to those who slept (on AI) last two years</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        p, li {
+            text-align: justify;
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        li {
+            margin-bottom: 15px;
+        }
+        strong {
+            color: #2980b9;
+        }
+        em {
+            font-style: italic;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>A brief guide to those who slept (on AI) last two years</h2>
+
+    <h3>1. General understanding</h3>
+
+    <p>LLMs are just predictors of the most probable answer based on provided input, and previously generated outputs. They do not have logical frameworks or guidelines like (some) humans do. You can try to <em>imitate</em> those by clearly describing the logic/patterns/guidelines/approach for an LLM, and/or providing an example. You can't expect logic or truth — you can expect contextual plausibility. The rest is up to you. Basic LLMs (without add-ons described below) give you a rough equivalent of "what first pops to mind of a person with encyclopedic knowledge without much thinking or understanding". It's not an answer to your question. It is a text which with some luck also happens to be answer.</p>
+
+    <h3>2. Notes on prompt engineering</h3>
+
+    <ul>
+        <li><strong>be meaningfully verbose</strong><br>
+        If you want just generic information, e.g. data of sodium in a periodic table, you can (and should) say just that - "sodium periodic table". Not only you avoid unnecessary token burn, you save yourself time. If you need something more specific, give only <em>meaningful</em> and <em>relevant</em> details. Make sure they are structured. Avoid negatives, especially personified ones, such as "I do not care about". If it is a clear instruction, like "Exclude X from results", it may be still fine. But if you already have seen that LLM gives too much, prefer "only" in the instructive style, e.g. "List only the titles of all songs from album X of a band Y"</li>
+        
+        <li><strong>avoid unclear or combined instructions</strong><br>
+        Do not use "maybes", "you decides", "whatever you prefers", "ideally-s" etc. <em>Do not ask for multiple things in one prompt.</em> Even though modern tools (see below) might handle it well, quality is better if you first ask on possible ways to do something, then select one yourself, then instruct AI in the chat to do that in the defined way, with specifics, then export the result, and then ask to refine it.</li>
+        
+        <li><strong>ask model how to prompt</strong><br>
+        If you are unsure how to articulate your question, ask AI on tips for prompting or to create prompt for itself. Can be useful at the beginning.</li>
+        
+        <li><strong>consider context window</strong><br>
+        context window is certain maximum amount of tokens (words or word fragments) which model can "see" at once. And context itself is all the tokens in a current interaction. Even before hitting this maximum amount, quality starts to decline (the more you see, the less attention you pay to details. Same with models). It's also known as context rotting. Additionally, under the hood each next message feeds in all previous ones. So it happens quicker than you'd expect. Ask about one thing at a time. Ensure that output won't be too big. E.g. you can enquire about ways to achieve X. Once you have selected one (maybe after several extra questions), move onto the new chat. So the same rule as with <em>meaningful verbosity</em> applies - dialogue should have enough relevant info so that next answer is good, but not more. If conversation is already big, and contains relevant info, you may want to export it, ask AI to some it up telling what's most relevant, and then feed it to the new chat. It's also known as task decomposition. Some modern wrappers and models can compile history into digests under the hood, but do not count on that.</li>
+        
+        <li><strong>be explorative</strong><br>
+        Feel free to ask what's possible in certain area, what are common approaches to do X, what exists etc. It might seem like it contradicts the previous topics, and partly it does: that's why it's better to broadly enquire in one chat about what's possible in one chat, and once you come up with a plan/option/approach, go into details or execution in another chat.</li>
+        
+        <li><strong>avoid topic hopping</strong><br>
+        Do not ask about things from different areas in the same chat. You reduce quality and burn more tokens.</li>
+        
+        <li><strong>use proper style</strong><br>
+        When prompting, use same style as the style of the source you would like to consult. Obviously LLM is not a database, but indirectly you increase the likelihood of getting digested information from a scientific paper if you have scientifc tone, information from IT documentation if you use IT jargon and calm and matter-of-factly tone, etc. It is especially relevant because many models try to mimic your tone, and it leads to injecting "ohs", "ahs", "maybes" etc. into your answer, and these are unlikely to be found in a scientific paper, so you get less from it's digest and more from the chats of armchair experts and keyboard warriors. There is a temptation to chat with it like with a buddy. Don't. The most common human bug is to treat anything that communicates with us as alive and to ascribe to it a set of functions typical to humans.</li>
+        
+        <li><strong>use system prompting</strong>: you can add some rules which apply to all dialogues or at least to one complete dialogue. It can be found usually in settings menus of chat bots. If not, you can specify them just at the beginning of the chat. Some built-in rules in e.g. chat gpt include changing the personality it mimics, things it should or should not do etc. General rules not related to the task itself, but rather to the way it should operate. You can provide arbitrary ones. They have to be provided extremely matter-off-factly. Look online for good system prompts. There are even <a href="https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools?tab=readme-ov-file">collections of those</a>. Paired with proper tone/style (see previous point), setting proper personality in a system prompt can improve result a lot. Good practice is also to include in system prompts things like "if you need ask further questions; if you do not know, tell so". Sometimes it helps.</li>
+        
+        <li><strong>using relevant context and examples</strong>: make sure to provide examples of documents, code etc. if you want the result to be closer to it. And make sure to omit/exclude unnecessary data (e.g. when working with a big document or codebase)</li>
+    </ul>
+
+    <p>Even outside of LLMs prompt engineering is a useful skill - it helps you collect your thoughts and articulate your requests or ideas much more efficiently. In addition, while formulating your thoughts you will probably come up with the answer yourself. Or at least with a plan. Rubber duck effect.</p>
+
+    <h3>3. Tools which can extend LLM features</h3>
+
+    <p>There is a number of ways to <em>extend</em> or <em>tweak</em> LLM capabilities. Please note - not <em>improve</em> capabilities (of LLM itself). However, you can <em>improve</em> usefulness by extending or tweaking capabilities. There are numerous tools which stay in motion. So here more the principles they built upon are described, not exact tools or models.</p>
+
+    <ul>
+        <li><strong>choose the right model</strong>: it seems obvious, but it is true. Some models are better at fixing small pieces of code, some at generic suggestions etc. etc. These things stay in motion, so look online for fresh benchmarks and leaderboards.</li>
+        
+        <li><strong>reasoning models</strong>: these are models which include talking to itself, simulating exchange between LLM and you. This can extend how far LLM goes, i.e. the answer is not the first directly associated thought (not directly what "comes to mind" for a human), but rather a chain of associations. But keep in mind - it is still a chain of associations via the probabilities of how likely are words to be in the same context, not via some logical frameworks.</li>
+
+        <li><strong>multi-modals</strong>: there are models (or, rather, wrappers on top of several models) which can generate and/or understand not just text, but other formats, such as images or audio. This can often be combined with reasoning (or manual multiple prompts, chain-prompting) so that e.g. a model can generate a webpage, then reflect on the visual result (if it is provided or generated, see tool access below)</li>
+
+        <li><strong>tool access</strong>: it is a core idea of nowadays hyped <strong>"agents"</strong>. In addition to just chat, you give it access to tools, such as command line, search engines etc. These have to be either well-known tools with formalized interfaces, or you have to provide formalized description of their usage along with some examples. There are emerging ways to formalize tool access, such as MCP (Model Context Protocol). It's just a protocol, more of a convention really, such as e.g. REST. Also keep in mind, quality of a tool obviously matters. Default chat wrappers such as chatgpt website now already have access to some tools, such as search engine or python interpreter, but they may be not the best or most suitable tools. E.g. if you want AI to go throw a lot of webpages, i.e. act it as a powerful crawler, you either need to give it access to a conventional powerful crawler with direct instructions, or at least to a program which covers access issues, rate limit issues etc. etc. But of course you want to make sure that model has access only to sandboxed tools. One deletion command can destroy all the usefulness. Chaining is also useful - you can verify each command it is about to execute, one by one.</li>
+
+        <li><strong>using relevant context or even RAG</strong><br>
+        Yes, again (s. above). In the sense of tooling, often AI can be sitting on top of certain data source right away, such as browser extensions which prepare context and then talk to API. Use it. Make sure that you understand the data flow. But beware of both context rotting and hard context limits. 20 MB text file can not be processed in one go. If you want AI to be meaningfully useful on big amounts of data, you need to set up RAG (Retrieval-Augmented Generation). It is an approach where you setup tools to retrieve and prepare information from your data base, documents, websites with rate limiting, or any other custom sources with classical tools, and then feed it to AI to generate the answer, if needed also with iterations under the hood (retrieve-analyze-retrieve gain-analyze-generate answer). Like most chat bots are augmented with google search engine, you might need to add classical tooling that is good at finding at retrieving relevant information in your data base, collection of documents, website with rate limiting or other custom source.</li>
+
+        <li><strong>fine tuning and its role</strong><br>
+        Not to be confused with other tools above, they don't require training, they just make AI talk with itself, or with outside tools, or with reformatted document chunks as an input. Fine tuning means changing the model. There is a hype around fine tuning, as well as there is hype around retraining. But it is not a magic wand, and you will barely need it. You can achieve quite a lot just via giving more relevant context and system prompt, and/or utilizing tools. But if: 1. You have a <em>large enough</em> corpus of data. 2. The task can be formalized as "given input X, generate output Y", 3. It is expected to be done millions of times. You can experiment with fine tuning. It is generally useful for a very large scale; if you only need a small batch of tasks to be done, you will invest more in fine tuning than paying for tokens on a regular model with relevant context. There is also a limit for a fine tuning - if you make a model too specialized, it may lose more generic knowledge which you'd still need. It also will still hallucinate, be bad at specifics (vs generics), won't magically become logical etc. For almost all use cases just setting up tooling and giving proper context is a more efficient way.</li>
+    </ul>
+
+    <h3>4. What can AI help with</h3>
+
+    <p>Just to give you and idea on where you can actually use this thing.</p>
+
+    <ul>
+        <li><strong>Communication work</strong><br>
+        AI are excellent at summarizing, rewriting and changing style of texts. If you want something to be explained in simple terms, or sound more polite, or more bookish, do ask AI.</li>
+
+        <li><strong>Data transformation</strong><br>
+        You can do same with technical data, e.g. transform between CSV, C arrays, Markdown etc.</li>
+
+        <li><strong>Broadening your views</strong><br>
+        If you want to start with a new topic, e.g. learn a new language, ask about possible exercises for certain muscle groups or about newest trends in AI usage: chats with LLMs are good place to start. It can be more efficient "exploring" than just googling. Often we don't think things which are outside of our bubble. AI can give you some decent "Wait, it exists?" and "Wait, it was possible all the time?" moments</li>
+
+        <li><strong>Inspirations</strong><br>
+        You don't have to use what AI gives you. But it can be a good start. Ask about what's possible. Ask about common approaches to do something. Ask away.</li>
+
+        <li><strong>Quick references</strong><br>
+        If something is fairly common (periodic table, popular band, ways to do something in Python) AI can provider better and more consolidated results than just googling or even manuals</li>
+
+        <li><strong>Be careful about too domain-specific information</strong><br>
+        If something is extremely domain-specific, AI may easily hallucinate. Cross-check and verify.</li>
+
+        <li><strong>Do not assume that something niche went into training data</strong><br>
+        If there is a software packet with 20 downloads or a youtube channel with just a thousand subscribers, do not assume that AI knows it, or even knows of it. It's more likely to provide some data which are more generic, but may be plain wrong in regard of this packet or channel. If you need to work with such information, make sure to prepare it well (feed relevant source files from this software packet, download data via apis or crawlers etc.)</li>
+
+        <li><strong>Beware of hallucinations</strong><br>
+        The more niche or personal you go - the bigger the chance of hallucination. AI is good at generics and bad at specifics. Additionally, models will rarely refuse to answer or tell that they do not know. They'd rather generate whatever information regardless of its quality.</li>
+
+        <li><strong>Beware of a sycophancy</strong><br>
+        Even though AI is excellent first partner to verify your idea - to ask wether it makes sense or to ask if you are right - it may still support you just to please you. AI reward models during fine tuning include likes from testers and users, so the content is aiming to please most people. You can counter it with system prompts (especially in regard of style, personality, etc.) and by asking for critic explicitly. AI aims to please and lets bad ideas shine.</li>
+
+        <li><strong>Learning</strong><br>
+        Anything. If you want explanation of a certain grammatical structure or a little piece of code, if you want to create exercises for learning (words in a foreign language, certain computer language feature, whatever), AI is very good at it. Even defining timelines to learn something, refining learning programs and finding materials on certain topics can be good. It's a patient teacher and can rephrase very well until you understand.</li>
+
+        <li><strong>Reviews</strong><br>
+        Be it code review or grammar review of an e-mail, basically any text-based material, AI is very good at spotting outliers. It's not likely to find deep conceptual errors, but if something does not match a dictionary, library usage, or widely adopted patterns - it will be found. It helped me found countless stupid bugs before they went into production.</li>
+
+        <li><strong>Translations</strong><br>
+        Not just changing style, but translation with AI are insanely better with any conventional tool. But keep context rotting in mind. It won't translate you a big book in one go, or a huge codebase.</li>
+
+        <li><strong>Throw-away prototypes</strong><br>
+        If you want to show a demo of a webpage, if you need a local dashboard, if you need a script to transform X and Y,</li>
+
+        <li><strong>Supplementary materials and placeholders</strong><br>
+        If you need one-pages, nicer visuals for the presentations (such as better rendered charts), any kind of small sites, temporary icons etc. - AI can help. Remember that it handles text formats better, so e.g. it can generate a decent A4-formatted HTML for printing which will make a nice leaflet.</li>
+    </ul>
+
+    <p>Remember - with just an LLM you'll get what comes first to mind of a person knowledgeable in the area. Rule of thumb: if the task is non-trivial to a person knowledgeable in the area, you need not just AI to solve it. (and by trivial I mean not that they know it can be done or conceptually know how, but rather that they can do it without a plan, without reiterating even once etc.) If you yourself would need to come up with more than a one-step plan - better split prompts, split tasks, and you might need not just AI. But it can still help you a lot when used properly.</p>
+
+    <h3>5. Important warning for future you</h3>
+
+    <p>Let's imagine in some time you use AI regularly. Be careful.</p>
+
+    <p>The danger is not that AI will become too smart. The danger is that it will help us become more stupid.</p>
+
+    <p>You need to be disciplined. Use AI for learning, not to solve homework or tasks at work which you are unsure how to approach yourself. Let AI be your coach and tool. Not your substitute.</p>
+
+    <p>If you consciously decide that doing X is not relevant for your education, self-improvement, professional skills etc - go ahead. If you a physics PhD, you probably won't benefit much from learning how to center div in your web-based presentation.</p>
+
+    <p>Ideally, we need not just parent-control in AI, we need self-control. E.g. system prompts which won't let AI prevent you from becoming better you.</p>
+
+    <p>Remember - learning means struggle. Offloading tasks too often for a short-term benefit will make you broke long-term.</p>
+</body>
+</html>
