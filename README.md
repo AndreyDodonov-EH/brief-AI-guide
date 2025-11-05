@@ -1,7 +1,13 @@
 ## A brief guide for those who slept on AI the last two years
 
-### 1. What LLMs actually are
+### Rationale (who is this guide for?)
 
+Over the last couple of years, I’ve noticed many great engineers haven’t really used modern AI tools, but still expect miracles because of the hype around them.  
+This guide is my attempt to summarise what you realistically can and can’t do today with large language models (LLMs) and the tools around them,
+and how to use them to boost your productivity (and learn something new in the process).
+
+
+### 1. What LLMs actually are
 Large Language Models (LLMs) are probability machines: they predict the most likely next token (word piece) given your input and everything they’ve generated so far. That’s it.
 
 They **do not** have built-in logic, beliefs, or a model of the world like humans do. You can *imitate* structure and reasoning by clearly describing rules, steps, patterns, or styles, and by giving examples — but underneath it’s still just pattern matching.
