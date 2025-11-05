@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420" role="img" aria-labelledby="title desc">
+  <title>Abstract AI Guide Cover</title>
+  <desc>Abstract, textless cover with gradients, soft glows, waves, and grid to evoke a modern AI/tech theme.</desc>
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1026"/>
+      <stop offset="50%" stop-color="#2a2e6e"/>
+      <stop offset="100%" stop-color="#0a6fb3"/>
+    </linearGradient>
+
+    <!-- Soft radial glows -->
+    <radialGradient id="glowCyan" cx="50%" cy="35%" r="40%">
+      <stop offset="0%" stop-color="#39d0ff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#39d0ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowMagenta" cx="70%" cy="70%" r="45%">
+      <stop offset="0%" stop-color="#b537f2" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#b537f2" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Subtle grid pattern -->
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M20 0H0V20" fill="none" stroke="#ffffff" stroke-opacity="0.06"/>
+    </pattern>
+
+    <!-- Gentle blur for shapes -->
+    <filter id="blurSoft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+
+    <!-- Grain for texture -->
+    <filter id="grain" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.04"/>
+      </feComponentTransfer>
+      <feBlend mode="overlay" in2="SourceGraphic"/>
+    </filter>
+
+    <!-- Gradient stroke for waves -->
+    <linearGradient id="waveStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#47e0ff"/>
+      <stop offset="50%" stop-color="#87a1ff"/>
+      <stop offset="100%" stop-color="#b76dff"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background fill -->
+  <rect width="1000" height="420" fill="url(#bg)"/>
+
+  <!-- Soft glows -->
+  <ellipse cx="520" cy="150" rx="420" ry="180" fill="url(#glowCyan)" filter="url(#blurSoft)"/>
+  <ellipse cx="760" cy="300" rx="380" ry="190" fill="url(#glowMagenta)" filter="url(#blurSoft)"/>
+
+  <!-- Grid overlay with vignette mask effect -->
+  <g opacity="0.45">
+    <rect width="1000" height="420" fill="url(#grid)"/>
+    <!-- Mild vignette using radial gradient via a large transparent circle -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="60%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.35"/>
+    </radialGradient>
+    <rect width="1000" height="420" fill="url(#vignette)"/>
+  </g>
+
+  <!-- Concentric rings suggesting signal/learning -->
+  <g opacity="0.18">
+    <circle cx="240" cy="210" r="150" fill="none" stroke="#9ed8ff" stroke-width="1.2"/>
+    <circle cx="240" cy="210" r="190" fill="none" stroke="#c8a9ff" stroke-width="1"/>
+    <circle cx="240" cy="210" r="230" fill="none" stroke="#80ffc8" stroke-width="0.9"/>
+  </g>
+
+  <!-- Wave paths -->
+  <g fill="none" stroke="url(#waveStroke)">
+    <path d="M-20 120 C 120 90, 220 150, 360 120 S 640 60, 820 120 1100 160 1040 140" stroke-width="2.6" opacity="0.7"/>
+    <path d="M-40 260 C 110 280, 220 240, 360 260 S 650 310, 820 260 1080 210 1060 230" stroke-width="2" opacity="0.55"/>
+    <path d="M-20 330 C 140 300, 260 360, 420 330 S 700 270, 900 330 1120 390 1080 370" stroke-width="1.6" opacity="0.5"/>
+  </g>
+
+  <!-- Floating nodes (subtle) -->
+  <g>
+    <circle cx="720" cy="120" r="4.5" fill="#7cf3ff" opacity="0.85"/>
+    <circle cx="690" cy="180" r="3.5" fill="#e5baff" opacity="0.8"/>
+    <circle cx="840" cy="170" r="3.2" fill="#9effe3" opacity="0.8"/>
+    <circle cx="780" cy="240" r="2.6" fill="#bfe2ff" opacity="0.8"/>
+    <circle cx="860" cy="280" r="3.8" fill="#80ffc8" opacity="0.85"/>
+  </g>
+
+  <!-- Light top sheen -->
+  <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18"/>
+    <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+  </linearGradient>
+  <rect width="1000" height="140" fill="url(#sheen)"/>
+
+  <!-- Subtle grain overlay -->
+  <rect width="1000" height="420" fill="#000" opacity="0.0" filter="url(#grain)"/>
+</svg>
+
