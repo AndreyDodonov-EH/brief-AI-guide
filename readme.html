@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Brief Guide for Those Who Slept on AI the Last Two Years</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.5;
+            color: #2c3e50;
+            background: #ffffff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 12mm 15mm;
+        }
+
+        h1 {
+            font-size: 24pt;
+            font-weight: 700;
+            color: #1a252f;
+            margin-bottom: 5mm;
+            line-height: 1.2;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 3mm;
+        }
+
+        h2 {
+            font-size: 17pt;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-top: 6mm;
+            margin-bottom: 3mm;
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-size: 14pt;
+            font-weight: 600;
+            color: #34495e;
+            margin-top: 4mm;
+            margin-bottom: 2mm;
+            line-height: 1.2;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 2.5mm;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+        }
+
+        ul, ol {
+            margin-left: 6mm;
+            margin-bottom: 2.5mm;
+        }
+
+        li {
+            text-align: justify;
+            margin-bottom: 1.5mm;
+            padding-left: 1mm;
+        }
+
+        li p {
+            margin-bottom: 1.5mm;
+        }
+
+        blockquote {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 4mm 6mm;
+            margin: 4mm 0 4mm 4mm;
+            font-style: italic;
+            color: #555;
+        }
+
+        blockquote p {
+            text-align: left;
+            margin-bottom: 0;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 1mm 2mm;
+            border-radius: 1mm;
+            font-family: 'Courier New', monospace;
+            font-size: 10pt;
+            color: #c7254e;
+        }
+
+        strong {
+            font-weight: 700;
+            color: #1a252f;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        @media print {
+            body {
+                max-width: 100%;
+                padding: 15mm 20mm;
+            }
+
+            h1 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+            }
+
+            h2, h3 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                page-break-before: auto;
+            }
+
+            h3 {
+                margin-top: 8mm;
+            }
+
+            p, li {
+                orphans: 3;
+                widows: 3;
+                page-break-inside: avoid;
+            }
+
+            ul, ol {
+                page-break-inside: avoid;
+            }
+
+            li {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+
+            li ul, li ol {
+                page-break-before: avoid;
+            }
+
+            blockquote {
+                page-break-inside: avoid;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Additional rules for better PDF rendering */
+        ul, ol {
+            page-break-inside: avoid;
+        }
+
+        li {
+            page-break-inside: avoid;
+        }
+
+        .section {
+            margin-bottom: 6mm;
+        }
+    </style>
+</head>
+<body>
+    <h1>A brief guide for those who slept on AI the last two years</h1>
+
+    <div class="section">
+        <h2>1. What LLMs actually are</h2>
+        
+        <p>Large Language Models (LLMs) are probability machines: they predict the most likely next token (word piece) given your input and everything they've generated so far. That's it.</p>
+        
+        <p>They <strong>do not</strong> have built-in logic, beliefs, or a model of the world like humans do. You can <em>imitate</em> structure and reasoning by clearly describing rules, steps, patterns, or styles, and by giving examples — but underneath it's still just pattern matching.</p>
+        
+        <p>A plain LLM (without tools, search, code execution, etc.) is roughly like asking:</p>
+        
+        <blockquote>
+            <p>"What would a very well-read person blurt out first, without thinking too hard?"</p>
+        </blockquote>
+        
+        <p>It's not an answer to your question.<br>
+        It's a text which, with some luck, also happens to be an answer.</p>
+        
+        <p>Your job is to provide structure, constraints, and reality checks.</p>
+    </div>
+
+    <div class="section">
+        <h2>2. How to talk to LLMs (prompting & context)</h2>
+        
+        <h3>Be meaningfully verbose</h3>
+        
+        <p>If you just need the sodium entry in the periodic table, write exactly that:<br>
+        <code>"sodium periodic table"</code>.</p>
+        
+        <p>If you need something more complex, add <strong>only relevant and structured detail</strong>:</p>
+        
+        <ul>
+            <li>Prefer "only" over vague negatives:
+                <ul>
+                    <li>Good: "List only the song titles from album X by band Y."</li>
+                    <li>Worse: "I don't care about anything else."</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <p>Avoid fuzzy language like "maybe", "whatever you prefer", "ideally" when you actually have a preference.</p>
+        
+        <h3>Don't mix requests</h3>
+        
+        <p>Don't bundle 3 tasks into one mega-prompt. Quality is usually higher when you:</p>
+        
+        <ol>
+            <li>Ask: "What are ways to do X?"</li>
+            <li>Pick an approach yourself.</li>
+            <li>Start a new message (or new chat) with a precise instruction for that one approach.</li>
+            <li>Only then ask for refinements.</li>
+        </ol>
+        
+        <p>If you're unsure how to phrase something, you can simply ask:</p>
+        
+        <blockquote>
+            <p>"Help me craft a good prompt for this goal."</p>
+        </blockquote>
+        
+        <h3>Understand context and its limits</h3>
+        
+        <p>"Context" is the text the model sees at once (your instructions, previous messages, and sometimes hidden system rules). There's a <strong>maximum context window</strong> (a token limit).</p>
+        
+        <p>Even before you hit the hard limit, quality tends to degrade: the more text there is, the less attention goes to each detail — "context rotting".</p>
+        
+        <p>Practically:</p>
+        
+        <ul>
+            <li>Ask about <strong>one thing at a time</strong>.</li>
+            <li>Avoid huge rambly chats on many topics.</li>
+            <li>When a conversation gets long but contains important info, export it, ask the model to summarize what's relevant, and start a fresh chat with that summary.</li>
+            <li>If the output you want would be enormous, rethink the task: split it up, or use tools like RAG (see below).</li>
+        </ul>
+        
+        <h3>Stay on topic</h3>
+        
+        <p>Don't use one chat for tax advice, fitness plans, and C++ templates. Topic hopping wastes tokens and applies the wrong context to the wrong question.</p>
+        
+        <h3>Match the style to the source you'd like</h3>
+        
+        <p>If you want something that feels like a scientific paper, <strong>write your prompt in a scientific tone</strong>. For technical docs, use calm, precise, jargon-appropriate language. If you talk like a YouTube comment section, you'll get answers influenced by that style of text.</p>
+        
+        <p>Also, resist the urge to treat the model as a buddy.<br>
+        A very common human bug is to treat anything that communicates with us as alive and to assign it human-like qualities. Don't.</p>
+        
+        <h3>Use system-level instructions</h3>
+        
+        <p>Most tools let you set "global" rules (system prompts) for a chat or account:</p>
+        
+        <ul>
+            <li>Tone and personality</li>
+            <li>What to always do ("ask clarifying questions when needed")</li>
+            <li>What not to do ("don't invent sources; say you don't know")</li>
+        </ul>
+        
+        <p>These work best when written plainly and firmly. You can even reuse good system prompts from public collections.</p>
+        
+        <h3>Provide examples and relevant context</h3>
+        
+        <p>If you want something "like this", show "this": snippets of code, fragments of documents, email examples, etc. But ruthlessly strip anything irrelevant — large, noisy context hurts.</p>
+        
+        <p>Prompt engineering is useful even outside AI: it forces you to structure your thoughts. Often, while preparing a clear request, you stumble on the answer or at least a good plan (rubber-duck effect).</p>
+    </div>
+
+    <div class="section">
+        <h2>3. Extending LLMs beyond chat</h2>
+        
+        <p>You can't "improve" the core model, but you can dramatically boost <strong>usefulness</strong> with tools around it.</p>
+        
+        <p>Key ideas:</p>
+        
+        <ul>
+            <li><strong>Pick the right model.</strong> Some are better for code, some for generic writing, some for reasoning. Check current benchmarks, don't rely on old impressions.</li>
+            
+            <li><strong>Reasoning models / chains.</strong> Some systems let the model "talk to itself" or reason in multiple steps. It's still probabilistic associations, but over more steps instead of one quick guess.</li>
+            
+            <li><strong>Multimodal models.</strong> These can handle text plus images, sometimes audio or other formats. They can, for example, generate a web page, then look at the rendered result and comment on it.</li>
+            
+            <li><strong>Tool access (agents).</strong> Give the model tools: a shell, a browser, APIs, your scripts. But:
+                <ul>
+                    <li>Tool APIs must be clearly described, with examples.</li>
+                    <li>Access must be sandboxed. A single wrong <code>rm -rf</code> can ruin your day.</li>
+                    <li>It's often best to approve each action the model wants to take.</li>
+                </ul>
+            </li>
+            
+            <li><strong>RAG (Retrieval-Augmented Generation).</strong> Instead of dumping a 20 MB text file into the prompt (which won't fit), you:
+                <ol>
+                    <li>Store documents in a searchable index.</li>
+                    <li>For each question, retrieve a small, relevant subset.</li>
+                    <li>Feed only that subset to the model as context.</li>
+                </ol>
+                <p>This is how you make AI genuinely useful over your own data (docs, code, internal knowledge bases) without hallucinating wildly.</p>
+            </li>
+            
+            <li><strong>Wrappers and orchestration.</strong> Many tools sit between you and the model: editor plugins, browser extensions, automation frameworks, "research assistants" etc. They:
+                <ul>
+                    <li>Decide when to call which model.</li>
+                    <li>Chunk and prepare context.</li>
+                    <li>Call search engines, APIs, crawlers, or your scripts.</li>
+                    <li>Loop over "retrieve → analyze → generate → refine".</li>
+                </ul>
+            </li>
+            
+            <li><strong>Multi-agent systems.</strong> You can create several agents with different roles and let them collaborate. Useful, but also an efficient way to burn through tokens if not controlled.</li>
+        </ul>
+        
+        <p>Bottom line: for non-trivial tasks, the difference between "just a chat" and a <strong>well-designed toolchain</strong> around the model is huge.</p>
+    </div>
+
+    <div class="section">
+        <h2>4. What LLMs are actually good (and bad) at</h2>
+        
+        <p>Think in terms of "What would a smart, slightly lazy human be good at if they had read the whole internet?"</p>
+        
+        <p>They're great at:</p>
+        
+        <ul>
+            <li><strong>Information search & aggregation.</strong> A faster, more conversational front-end to lots of web searches.</li>
+            <li><strong>Summaries and simplification.</strong> Shortening verbose docs, emails, specs; turning jargon into plain language.</li>
+            <li><strong>Style transformations.</strong> Making text more polite, more formal, more casual, more textbook-like, etc.</li>
+            <li><strong>Data transformations.</strong> Converting between CSV, JSON, Markdown, C arrays, etc.</li>
+            <li><strong>Exploration and "what's possible?"</strong> Getting overviews of new areas, exercises for learning something, or lists of common approaches.</li>
+            <li><strong>Inspiration & idea-storming.</strong> You don't need to accept its proposals, but they're a useful starting point.</li>
+            <li><strong>Quick references.</strong> Periodic tables, Python idioms, common patterns in a language or framework.</li>
+            <li><strong>Learning and explanation.</strong> Explaining code snippets, grammar, math steps; generating practice exercises; adapting explanations to your level.</li>
+            <li><strong>Reviewing.</strong> Spotting obvious mistakes in code, grammar, style, or patterns. It's good at catching outliers, less good at deep conceptual issues.</li>
+            <li><strong>Translations.</strong> Much better and more context-aware than classic machine translation (within reasonable size limits).</li>
+            <li><strong>Throw-away prototypes and placeholders.</strong> Demo web pages, simple dashboards, scripts to glue tools together, rough icons, draft one-pagers, etc.</li>
+        </ul>
+        
+        <p>They are <strong>weak or dangerous</strong> at:</p>
+        
+        <ul>
+            <li><strong>Highly niche details.</strong> Unknown open-source projects with 20 downloads, small channels, internal company tools — assume it doesn't know them unless you provide the data.</li>
+            <li><strong>Up-to-date specifics.</strong> Versions, prices, availability, breaking changes — always cross-check.</li>
+            <li><strong>Hallucination.</strong> If it doesn't know, it tends to <em>invent</em> plausible-sounding nonsense instead of admitting ignorance.</li>
+            <li><strong>Sycophancy.</strong> Models are trained to please users. If you ask "This idea is good, right?", it's biased to agree unless you explicitly demand critique.</li>
+            <li><strong>Large, complex, multi-step tasks on your own data</strong> without the right infrastructure (indexing, chunking, RAG, tools). That's not a prompt problem; it's a <strong>system design</strong> problem.</li>
+        </ul>
+        
+        <p>Rule of thumb:</p>
+        
+        <blockquote>
+            <p>If a task is non-trivial for a competent human in that area, you probably need <em>more than just</em> "paste everything into a chat and pray".</p>
+        </blockquote>
+        
+        <p>Split tasks, build the right scaffolding, and use the model as a component, not a magician.</p>
+    </div>
+
+    <div class="section">
+        <h2>5. A warning for future you</h2>
+        
+        <p>If you start using AI daily, the biggest risk is not "AI becomes too smart".</p>
+        
+        <p>The real risk is that it makes <strong>you</strong> dumber by removing all struggle.</p>
+        
+        <p>Use AI as a coach, sparring partner, and power tool — <strong>not</strong> as a substitute for thinking in areas you actually want to master.</p>
+        
+        <p>If you consciously decide:</p>
+        
+        <blockquote>
+            <p>"This skill is not important for me; I just need it done,"</p>
+        </blockquote>
+        
+        <p>then offload away.</p>
+        
+        <p>But if it's core to your learning or professional growth, force yourself to:</p>
+        
+        <ol>
+            <li>Think first, then ask.</li>
+            <li>Use AI to explain, critique, and suggest alternatives.</li>
+            <li>Keep some friction in the loop so you still learn.</li>
+        </ol>
+        
+        <p>We don't just need parental controls on AI.<br>
+        We need <strong>self-control</strong>: guardrails that stop us from outsourcing everything that makes us smarter.</p>
+        
+        <p>Learning involves effort and frustration.<br>
+        Short-term comfort from offloading too much can lead to long-term fragility.</p>
+        
+        <p>Use AI to <strong>amplify</strong> your thinking, not to switch it off.</p>
+    </div>
+</body>
+</html>
