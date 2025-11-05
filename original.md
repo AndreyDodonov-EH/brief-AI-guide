@@ -1,4 +1,4 @@
-## A brief guide to those who slept (on AI) last two years
+## A guide to those who slept (on AI) last two years
 
 ### 1. General understanding
 

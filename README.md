@@ -6,6 +6,9 @@ Over the last couple of years, I’ve noticed many great engineers haven’t rea
 This guide is my attempt to summarise what you realistically can and can’t do today with large language models (LLMs) and the tools around them,
 and how to use them to boost your productivity (and learn something new in the process).
 
+This is a condensed version;
+if you prefer more verbose version, have a look at [the original document](./original.md).
+
 
 ### 1. What LLMs actually are
 Large Language Models (LLMs) are probability machines: they predict the most likely next token (word piece) given your input and everything they’ve generated so far. That’s it.
