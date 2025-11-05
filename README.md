@@ -2,7 +2,7 @@
 
 ### Rationale (who is this guide for?)
 
-Over the last couple of years, I’ve noticed many great engineers haven’t really used modern AI tools, but still expect miracles because of the hype around them.  
+Over the last couple of years, I’ve noticed many great engineers haven’t really used modern AI tools, and now expect miracles because of the hype around them.  
 This guide is my attempt to summarise what you realistically can and can’t do today with large language models (LLMs) and the tools around them,
 and how to use them to boost your productivity (and learn something new in the process).
 
