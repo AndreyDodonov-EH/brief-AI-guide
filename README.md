@@ -9,7 +9,7 @@ You can try to _imitate_ those by clearly describing the logic/patterns/guidelin
 and/or providing an example.
 You can’t expect logic or truth — you can expect contextual plausibility. The rest is up to you.
 Basic LLMs (without add-ons described below) give you a rough equivalent of "what first pops to mind of a person with encyclopedic knowledge without much thinking or understanding".
-It's now an answer to your question.
+It's not an answer to your question.
 It is a text which with some luck also happens to be answer.
 
 ### 2. Notes on prompt engineering
