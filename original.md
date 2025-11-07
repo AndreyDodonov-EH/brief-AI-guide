@@ -39,7 +39,7 @@ It is a text which with some luck also happens to be answer.
   Ask about one thing at a time. Ensure that output won't be too big.
   E.g. you can enquire about ways to achieve X. Once you have selected one (maybe after several extra questions), move onto the new chat.
   So the same rule as with *meaningful verbosity* applies - dialogue should have enough relevant info so that next answer is good, but not more.
-  If conversation is already big, and contains relevant info, you may want to export it, ask AI to some it up telling what's most relevant, and then feed it to the new chat.
+  If conversation is already big, and contains relevant info, you may want to export it, ask AI to sum it up telling what's most relevant, and then feed it to the new chat.
   It's also known as task decomposition.
   Some modern wrappers and models can compile history into digests under the hood, but do not count on that.
 - **be explorative**
@@ -87,7 +87,7 @@ So here more the principles they built upon are described, not exact tools or mo
 - **multi-modals**: there are models (or, rather, wrappers on top of several models) which can generate and/or understand not just text, but other formats, such as images or audio. This can often be combined with reasoning (or manual multiple prompts, chain-prompting) so that e.g. a model can generate a webpage, then reflect on the visual result (if it is provided or generated, see tool access below)
 
 - **tool access**: it is a core idea of nowadays hyped **"agents"**. In addition to just chat, you give it access to tools, such as command line, search engines etc. These have to be either well-known tools with formalized interfaces, or you have to provide formalized description of their usage along with some examples. There are emerging ways to formalize tool access, such as MCP (Model Context Protocol). It's just a protocol, more of a convention really, such as e.g. REST. Also keep in mind, quality of a tool obviously matters. Default chat wrappers such as chatgpt website now already have access to some tools, such as search engine or python interpreter, but they may be not the best or most suitable tools.
-  E.g. if you want AI to go throw a lot of webpages, i.e. act it as a powerful crawler, you either need to give it access to a conventional powerful crawler with direct instructions, or at least to a program which covers access issues, rate limit issues etc. etc.
+  E.g. if you want AI to go throw a lot of webpages, i.e. act it as a powerful crawler, you either need to give it access to a conventional powerful crawler with direct instructions, or at least to a program which covers access issues, rate limit issues etc. etc.  
   But of course you want to make sure that model has access only to sandboxed tools. One deletion command can destroy all the usefulness.
   Chaining is also useful - you can verify each command it is about to execute, one by one.
 
@@ -214,7 +214,7 @@ The closer the task to association-based text processing, the better the results
 
 - **Translations**
   Not just changing style, but translation with AI are insanely better
-  with any conventional tool.
+  than with any conventional tool.
   But keep context rotting in mind. It won't translate you a big book in one go,
   or a huge codebase.
 
