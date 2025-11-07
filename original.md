@@ -108,6 +108,8 @@ So here more the principles they built upon are described, not exact tools or mo
   There are numerous business built around it, starting from simple browser extensions which scan e-mails or sum up youtube videos, to powerful coding assistance in the form of editors, terminals, extensions etc. etc. (Cursor, Codex, Windsurf, Perplexity just to name a few). Ideally google (or ask AI!) to know what AI-powered tools may be relevant for your task.
   Keep in mind that model might not know newest state of things, so make sure it can also search online on your behalf.
   And sometimes you need direct API usage, custom MCP servers and multiple agents.
+  You can also schedule recurring automations — for example, have your agent run weekly research on a specific topic and deliver a short, personalized digest (your own "news feed").
+  Treat this like any other toolchain: define the sources, rate limits, and output format; log results; and keep a human approval step if the automation can take actions.
 
 - **Multi-agents systems**. Building on all of the above, you can use several agent and define communication between them. You can do it in any way, but there are also emerging protocols, such as A2A - protocol for interaction between agents.
   But beware - with a custom multi-agent system you will probably burn through your tokens rather quickly.

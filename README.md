@@ -114,6 +114,7 @@ Key ideas:
   - Chunk and prepare context.
   - Call search engines, APIs, crawlers, or your scripts.
   - Loop over “retrieve → analyze → generate → refine”.
+  - Schedule tasks (e.g., weekly research on a topic, personalized news feed).
 
 - **Multi-agent systems.** You can create several agents with different roles and let them collaborate. Useful, but also an efficient way to burn through tokens if not controlled.
 
