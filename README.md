@@ -156,7 +156,8 @@ Split tasks, build the right scaffolding, and use the model as a component, not 
 
 If you start using AI daily, the biggest risk is not “AI becomes too smart”.
 
-The real risk is that it makes **you** dumber by removing all struggle.
+The real risk is that it makes **you** dumber by removing all struggle.  
+You don't want to end up with thinking as a service.
 
 Use AI as a coach, sparring partner, and power tool — **not** as a substitute for thinking in areas you actually want to master.
 
